@@ -32,6 +32,7 @@ func main() {
 	var headers []string
 	c.OnHTML("th", func(e *colly.HTMLElement) {
 		headers = append(headers, strings.TrimSpace(e.Text))
+		c.OnHTMLDetach("th")
 	})
 
 	var players [][]string
