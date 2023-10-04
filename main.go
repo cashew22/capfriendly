@@ -41,8 +41,10 @@ func main() {
 		e.ForEach("td", func(_ int, el *colly.HTMLElement) {
 			player = append(player, strings.TrimSpace(el.Text))
 		})
+
 		if len(player) > 0 {
 			player[0] = strings.SplitN(player[0], " ", 2)[1]
+			player[len(player)-1] = strings.ReplaceAll(strings.Trim(player[len(player)-1], "$"), ",", "")
 			players = append(players, player)
 		}
 	})
